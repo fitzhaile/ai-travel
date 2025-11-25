@@ -33,3 +33,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# local sqlite database
+*.db
+*.db-shm
+*.db-wal
+

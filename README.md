@@ -20,7 +20,7 @@ Hippo is an AI travel guide and recommendation web app that helps you choose bet
 - Next.js 14 (App Router) + TypeScript
 - Tailwind CSS for styling
 - OpenAI Node SDK with `gpt-5.1`
-- PostgreSQL for storing shared chats
+- SQLite (local dev) / PostgreSQL (production) for storing shared chats
 
 ### Getting Started
 
@@ -31,20 +31,19 @@ cd hippo-ai
 npm install
 ```
 
-2. **Set up PostgreSQL database**
-
-You'll need a PostgreSQL database for storing shared chats. For local development, you can:
-- Install PostgreSQL locally, or
-- Use a free hosted database from [Render](https://render.com), [Supabase](https://supabase.com), or [Neon](https://neon.tech)
-
-The database schema will be created automatically on first run.
-
-3. **Configure environment variables**
+2. **Configure environment variables**
 
 Create a `.env.local` file in `hippo-ai/` with at least:
 
 ```bash
 OPENAI_API_KEY=your-openai-api-key-here
+```
+
+**That's it for local development!** The app will automatically use SQLite (a file-based database) locally. No database server needed. The database file (`hippo-chats.db`) will be created automatically when you first share a chat.
+
+If you want to use PostgreSQL locally instead, add:
+
+```bash
 DATABASE_URL=postgresql://user:password@host:5432/database
 ```
 
@@ -63,7 +62,7 @@ AMADEUS_CLIENT_SECRET=your-amadeus-client-secret
 AMADEUS_BASE_URL=https://test.api.amadeus.com
 ```
 
-4. **Run the dev server**
+3. **Run the dev server**
 
 ```bash
 npm run dev
