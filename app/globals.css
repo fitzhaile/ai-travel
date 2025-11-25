@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-slate-50 text-slate-900 font-sans;
+}
+
+.chat-markdown h1 {
+  @apply text-base sm:text-lg font-semibold text-seacow-accentBlue mt-1 mb-2;
+}
+
+.chat-markdown h2 {
+  @apply text-sm sm:text-base font-semibold text-seacow-accentPurple mt-1 mb-2;
+}
+
+.chat-markdown h3 {
+  @apply text-sm font-semibold text-seacow-accentTeal mt-1 mb-2;
+}
+
+.chat-markdown p {
+  @apply mt-0 mb-3;
+}
+
+.chat-markdown ul {
+  @apply list-disc pl-5 mt-2 mb-4;
+}
+
+.chat-markdown > *:first-child {
+  margin-top: 0;
+}
+
+.chat-markdown > *:last-child {
+  margin-bottom: 0;
+}
+
+.chat-markdown ol {
+  @apply list-decimal pl-5 mt-2 mb-4;
+}
+
+
