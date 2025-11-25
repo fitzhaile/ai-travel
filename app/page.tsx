@@ -28,6 +28,8 @@ export default function HomePage() {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isSharing, setIsSharing] = useState(false);
+  const [shareUrl, setShareUrl] = useState<string | null>(null);
   const hasUserMessage = messages.some((m) => m.role === "user");
 
   const conversationBlocks = (() => {
@@ -136,6 +138,44 @@ export default function HomePage() {
     }
   };
 
+  const handleShare = async () => {
+    if (!hasUserMessage) {
+      return;
+    }
+
+    setIsSharing(true);
+    setShareUrl(null);
+
+    try {
+      const res = await fetch("/api/share", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          mode,
+          trip,
+          messages
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to create share link");
+      }
+
+      const data = await res.json();
+      setShareUrl(data.url);
+
+      // Copy to clipboard
+      await navigator.clipboard.writeText(data.url);
+    } catch (error) {
+      console.error("Error sharing chat:", error);
+      alert("Failed to create shareable link. Please try again.");
+    } finally {
+      setIsSharing(false);
+    }
+  };
+
   return (
     <main className="flex min-h-screen flex-col bg-gradient-to-b from-slate-50 via-sky-50 to-slate-50">
       <header className="border-b border-slate-200 bg-white/90 backdrop-blur">
@@ -148,7 +188,17 @@ export default function HomePage() {
               Chat with Hippo about where to go, what it should feel like, and how far your budget can stretch. Just describe what you want or name a couple of places.
             </p>
           </div>
-          <div className="flex items-center gap-2 text-[11px]">
+          <div className="flex items-center gap-3 text-[11px]">
+            {hasUserMessage && (
+              <button
+                type="button"
+                onClick={handleShare}
+                disabled={isSharing}
+                className="rounded-full bg-slate-100 px-3 py-2 text-xs font-medium text-slate-700 transition hover:bg-slate-200 disabled:opacity-50"
+              >
+                {isSharing ? "Sharing..." : shareUrl ? "✓ Copied!" : "Share Chat"}
+              </button>
+            )}
             <span className="hidden text-slate-500 sm:inline">Mode</span>
             <div className="flex gap-1.5 rounded-full bg-slate-100 px-1.5 py-1">
               <button

@@ -5,12 +5,13 @@ Hippo is an AI travel guide and recommendation web app that helps you choose bet
 ### Features
 
 - **Chat-style interface**: Conversation flow similar to ChatGPT, with Hippo as your assistant.
+- **Shareable chats**: Generate unique URLs to share your conversations with others.
 - **Structured city comparison**:
   - Plane, hotel, and local transportation costs.
   - Trip themes (nightlife, nature, culture, relaxing, balanced).
   - Two sets of activities: well-known vs. insider/local-ish.
 - **Three pricing modes** (selectable via dropdown above the chat):
-  - `AI estimate`: uses GPT’s general knowledge and rough ranges, clearly labeled as approximate.
+  - `AI estimate`: uses GPT's general knowledge and rough ranges, clearly labeled as approximate.
   - `Web-assisted`: can use an external web-search API to ground recent price ranges.
   - `Live prices`: can call flight and hotel APIs for more realistic live-ish numbers.
 
@@ -19,6 +20,7 @@ Hippo is an AI travel guide and recommendation web app that helps you choose bet
 - Next.js 14 (App Router) + TypeScript
 - Tailwind CSS for styling
 - OpenAI Node SDK with `gpt-5.1`
+- PostgreSQL for storing shared chats
 
 ### Getting Started
 
@@ -29,12 +31,21 @@ cd hippo-ai
 npm install
 ```
 
-2. **Configure environment variables**
+2. **Set up PostgreSQL database**
+
+You'll need a PostgreSQL database for storing shared chats. For local development, you can:
+- Install PostgreSQL locally, or
+- Use a free hosted database from [Render](https://render.com), [Supabase](https://supabase.com), or [Neon](https://neon.tech)
+
+The database schema will be created automatically on first run.
+
+3. **Configure environment variables**
 
 Create a `.env.local` file in `hippo-ai/` with at least:
 
 ```bash
 OPENAI_API_KEY=your-openai-api-key-here
+DATABASE_URL=postgresql://user:password@host:5432/database
 ```
 
 Optional, for web-assisted mode:
@@ -44,17 +55,15 @@ WEB_SEARCH_API_KEY=your-web-search-api-key-here
 WEB_SEARCH_API_ENDPOINT=https://your-web-search-endpoint.example.com/search
 ```
 
-Optional, for live prices mode:
+Optional, for live prices mode (Amadeus API):
 
 ```bash
-FLIGHT_API_BASE_URL=https://your-flight-api.example.com
-FLIGHT_API_KEY=your-flight-api-key-here
-
-HOTEL_API_BASE_URL=https://your-hotel-api.example.com
-HOTEL_API_KEY=your-hotel-api-key-here
+AMADEUS_CLIENT_ID=your-amadeus-client-id
+AMADEUS_CLIENT_SECRET=your-amadeus-client-secret
+AMADEUS_BASE_URL=https://test.api.amadeus.com
 ```
 
-3. **Run the dev server**
+4. **Run the dev server**
 
 ```bash
 npm run dev
@@ -74,9 +83,33 @@ Open `http://localhost:3000` in your browser.
 
 ### Deployment Notes
 
-- The app is designed to work well on platforms like Vercel:
-  - Set the same environment variables (`OPENAI_API_KEY`, optional travel APIs).
-  - Use the default Next.js build command: `npm run build`.
+#### Deploying to Render
+
+1. **Create a PostgreSQL database**:
+   - In Render Dashboard, go to **New → PostgreSQL**
+   - Copy the **Internal Database URL** (starts with `postgresql://`)
+
+2. **Create a Web Service**:
+   - Go to **New → Web Service**
+   - Connect your GitHub repository
+   - Configure:
+     - **Environment**: Node
+     - **Build Command**: `npm install && npm run build`
+     - **Start Command**: `npm start`
+
+3. **Set Environment Variables**:
+   - `OPENAI_API_KEY`: Your OpenAI API key
+   - `DATABASE_URL`: The PostgreSQL Internal Database URL from step 1
+   - `NEXT_PUBLIC_BASE_URL`: Your Render app URL (e.g., `https://your-app.onrender.com`)
+   - Optional: `AMADEUS_CLIENT_ID`, `AMADEUS_CLIENT_SECRET`, `WEB_SEARCH_API_KEY`, etc.
+
+4. **Deploy**: Render will build and deploy your app automatically.
+
+#### Other Platforms (Vercel, etc.)
+
+- Set the same environment variables (`OPENAI_API_KEY`, `DATABASE_URL`, optional travel APIs).
+- Use the default Next.js build command: `npm run build`.
+- Ensure your PostgreSQL database is accessible from your deployment platform.
 - Ensure that your chosen travel / search APIs support server-side use from your deployment region.
 
 
