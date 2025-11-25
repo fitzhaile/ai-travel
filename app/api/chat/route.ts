@@ -7,7 +7,7 @@ import {
   Mode,
   PriceBreakdown
 } from "../../../lib/types";
-import { buildSeaCowSystemPrompt, buildTripContext } from "../../../lib/prompts/seaCowPrompt";
+import { buildHippoSystemPrompt, buildTripContext } from "../../../lib/prompts/hippoPrompt";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const systemPrompt = buildSeaCowSystemPrompt(mode);
+    const systemPrompt = buildHippoSystemPrompt(mode);
     const tripContext = buildTripContext(trip);
 
     let liveDataContext = "";

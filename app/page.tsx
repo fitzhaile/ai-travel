@@ -141,7 +141,7 @@ export default function HomePage() {
       <header className="border-b border-slate-200 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
           <div>
-            <h1 className="mb-2 text-2xl sm:text-3xl font-semibold tracking-tight text-seacow-accentBlue">
+            <h1 className="mb-2 text-2xl sm:text-3xl font-semibold tracking-tight text-hippo-accentBlue">
               Hippo AI 🦛
             </h1>
             <p className="text-sm text-slate-600">
@@ -156,7 +156,7 @@ export default function HomePage() {
                 onClick={() => setMode("live-prices")}
                 className={`rounded-full px-2 py-1 transition text-xs ${
                   mode === "live-prices"
-                    ? "bg-seacow-accentTeal text-white shadow-sm"
+                    ? "bg-hippo-accentTeal text-white shadow-sm"
                     : "text-slate-600 hover:text-slate-900"
                 }`}
               >
@@ -167,7 +167,7 @@ export default function HomePage() {
                 onClick={() => setMode("web-assisted")}
                 className={`rounded-full px-2 py-1 transition text-xs ${
                   mode === "web-assisted"
-                    ? "bg-seacow-accentPurple text-white shadow-sm"
+                    ? "bg-hippo-accentPurple text-white shadow-sm"
                     : "text-slate-600 hover:text-slate-900"
                 }`}
               >
@@ -180,11 +180,11 @@ export default function HomePage() {
 
       <div className="flex flex-1 justify-center bg-gradient-to-b from-slate-50 via-slate-100 to-slate-50">
         <div className="flex w-full max-w-5xl flex-col px-4 pb-6 pt-4">
-          <div className="mb-3 grid gap-2 rounded-2xl border border-seacow-border bg-white/80 p-3 text-[11px] text-slate-700 sm:grid-cols-5">
+          <div className="mb-3 grid gap-2 rounded-2xl border border-hippo-border bg-white/80 p-3 text-[11px] text-slate-700 sm:grid-cols-5">
             <div className="sm:col-span-1">
               <label className="mb-1 block font-medium">From</label>
               <input
-                className="w-full rounded-md border border-seacow-border bg-slate-50 px-2 py-1 outline-none focus:border-seacow-accentPurple/70 focus:ring-1 focus:ring-seacow-accentPurple/60"
+                className="w-full rounded-md border border-hippo-border bg-slate-50 px-2 py-1 outline-none focus:border-hippo-accentPurple/70 focus:ring-1 focus:ring-hippo-accentPurple/60"
                 placeholder="City or airport"
                 value={trip.origin}
                 onChange={(e) =>
@@ -198,7 +198,7 @@ export default function HomePage() {
             <div>
               <label className="mb-1 block font-medium">City A</label>
               <input
-                className="w-full rounded-md border border-seacow-border bg-slate-50 px-2 py-1 outline-none focus:border-seacow-accentPurple/70 focus:ring-1 focus:ring-seacow-accentPurple/60"
+                className="w-full rounded-md border border-hippo-border bg-slate-50 px-2 py-1 outline-none focus:border-hippo-accentPurple/70 focus:ring-1 focus:ring-hippo-accentPurple/60"
                 placeholder="First option"
                 value={trip.cityA}
                 onChange={(e) =>
@@ -212,7 +212,7 @@ export default function HomePage() {
             <div>
               <label className="mb-1 block font-medium">City B</label>
               <input
-                className="w-full rounded-md border border-seacow-border bg-slate-50 px-2 py-1 outline-none focus:border-seacow-accentPurple/70 focus:ring-1 focus:ring-seacow-accentPurple/60"
+                className="w-full rounded-md border border-hippo-border bg-slate-50 px-2 py-1 outline-none focus:border-hippo-accentPurple/70 focus:ring-1 focus:ring-hippo-accentPurple/60"
                 placeholder="Second option"
                 value={trip.cityB}
                 onChange={(e) =>
@@ -227,7 +227,7 @@ export default function HomePage() {
               <label className="mb-1 block font-medium">Leave</label>
               <input
                 type="date"
-                className="w-full rounded-md border border-seacow-border bg-slate-50 px-2 py-1 text-[11px] outline-none focus:border-seacow-accentPurple/70 focus:ring-1 focus:ring-seacow-accentPurple/60"
+                className="w-full rounded-md border border-hippo-border bg-slate-50 px-2 py-1 text-[11px] outline-none focus:border-hippo-accentPurple/70 focus:ring-1 focus:ring-hippo-accentPurple/60"
                 value={trip.startDate}
                 onChange={(e) =>
                   setTrip((t) => ({
@@ -241,7 +241,7 @@ export default function HomePage() {
               <label className="mb-1 block font-medium">Return</label>
               <input
                 type="date"
-                className="w-full rounded-md border border-seacow-border bg-slate-50 px-2 py-1 text-[11px] outline-none focus:border-seacow-accentPurple/70 focus:ring-1 focus:ring-seacow-accentPurple/60"
+                className="w-full rounded-md border border-hippo-border bg-slate-50 px-2 py-1 text-[11px] outline-none focus:border-hippo-accentPurple/70 focus:ring-1 focus:ring-hippo-accentPurple/60"
                 value={trip.endDate}
                 onChange={(e) =>
                   setTrip((t) => ({
@@ -253,11 +253,11 @@ export default function HomePage() {
             </div>
           </div>
           <div
-            className={`${hasUserMessage ? "flex-1" : "flex-none"} space-y-6 overflow-y-auto rounded-3xl border border-seacow-border border-t-4 border-t-seacow-accentBlue bg-white pt-6 pr-5 pl-6 pb-6 shadow-[0_20px_55px_rgba(15,23,42,0.12)]`}
+            className={`${hasUserMessage ? "flex-1" : "flex-none"} space-y-6 overflow-y-auto rounded-3xl border border-hippo-border border-t-4 border-t-hippo-accentBlue bg-white pt-6 pr-5 pl-6 pb-6 shadow-[0_20px_55px_rgba(15,23,42,0.12)]`}
           >
             {conversationBlocks.map((block) => (
               <div key={block.id} className="flex justify-start">
-                <div className="w-full rounded-2xl border border-seacow-border bg-white px-4 pt-3 pb-4 text-sm leading-relaxed shadow-sm shadow-slate-200/60">
+                <div className="w-full rounded-2xl border border-hippo-border bg-white px-4 pt-3 pb-4 text-sm leading-relaxed shadow-sm shadow-slate-200/60">
                   {block.question && (
                     <div className="mb-3 rounded-xl border border-sky-100 bg-sky-50 px-3 py-2 text-slate-900">
                       <div className="mb-0.5 text-[10px] uppercase tracking-wide text-sky-700">
@@ -269,8 +269,8 @@ export default function HomePage() {
                     </div>
                   )}
                   {block.answer && (
-                    <div className="text-seacow-ink">
-                      <div className="mb-1 text-[10px] uppercase tracking-wide text-seacow-accentPurple">
+                    <div className="text-hippo-ink">
+                      <div className="mb-1 text-[10px] uppercase tracking-wide text-hippo-accentPurple">
                         Hippo
                         {block.answer.mode === "web-assisted" && " · Web-assisted"}
                         {block.answer.mode === "live-prices" && " · Live price AI"}
@@ -287,8 +287,8 @@ export default function HomePage() {
               <div className="flex justify-start">
                 <div className="flex items-center gap-2 text-xs text-slate-600">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-seacow-accentBlue/60 opacity-75"></span>
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-seacow-accentBlue"></span>
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-hippo-accentBlue/60 opacity-75"></span>
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-hippo-accentBlue"></span>
                   </span>
                   Hippo is thinking about your trip…
                 </div>
@@ -296,10 +296,10 @@ export default function HomePage() {
             )}
           </div>
 
-          <div className="mt-4 rounded-2xl border border-seacow-border bg-white pt-6 pr-6 pl-6 pb-3 shadow-[0_18px_40px_rgba(15,23,42,0.15)]">
+          <div className="mt-4 rounded-2xl border border-hippo-border bg-white pt-6 pr-6 pl-6 pb-3 shadow-[0_18px_40px_rgba(15,23,42,0.15)]">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-stretch">
               <input
-                className="flex-1 rounded-xl border border-seacow-border bg-slate-50 px-3 py-3 text-sm text-seacow-ink outline-none ring-0 placeholder:text-slate-400 focus:border-seacow-accentPurple/70 focus:ring-1 focus:ring-seacow-accentPurple/60"
+                className="flex-1 rounded-xl border border-hippo-border bg-slate-50 px-3 py-3 text-sm text-hippo-ink outline-none ring-0 placeholder:text-slate-400 focus:border-hippo-accentPurple/70 focus:ring-1 focus:ring-hippo-accentPurple/60"
                 placeholder="Ask Hippo to compare your two destinations or dream up a trip."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -309,7 +309,7 @@ export default function HomePage() {
                 type="button"
                 onClick={handleSend}
                 disabled={isLoading || !input.trim()}
-                className="inline-flex items-center justify-center rounded-xl bg-seacow-accentBlue px-4 py-3 text-sm font-medium text-white shadow-md shadow-seacow-accentBlue/40 transition hover:bg-seacow-accentPurple disabled:cursor-not-allowed disabled:opacity-60 sm:min-w-[6rem] sm:-mt-0.5"
+                className="inline-flex items-center justify-center rounded-xl bg-hippo-accentBlue px-4 py-3 text-sm font-medium text-white shadow-md shadow-hippo-accentBlue/40 transition hover:bg-hippo-accentPurple disabled:cursor-not-allowed disabled:opacity-60 sm:min-w-[6rem] sm:-mt-0.5"
               >
                 {isLoading ? "Sending…" : "Send"}
               </button>

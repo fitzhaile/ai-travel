@@ -1,6 +1,6 @@
 import { CityComparisonInput, Mode } from "../types";
 
-export function buildSeaCowSystemPrompt(mode: Mode) {
+export function buildHippoSystemPrompt(mode: Mode) {
   const modeLine =
     mode === "web-assisted"
       ? "You are given a short web-data context that may include recent price ranges. Use it to ground your estimates, but still treat anything missing as approximate."

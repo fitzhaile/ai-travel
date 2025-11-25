@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        seacow: {
+        hippo: {
           ink: "#020617",
           sky: "#020617",
           skyAlt: "#0b1120",

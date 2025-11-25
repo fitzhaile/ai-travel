@@ -25,13 +25,13 @@ Hippo is an AI travel guide and recommendation web app that helps you choose bet
 1. **Install dependencies**
 
 ```bash
-cd sea-cow-app
+cd hippo-ai
 npm install
 ```
 
 2. **Configure environment variables**
 
-Create a `.env.local` file in `sea-cow-app/` with at least:
+Create a `.env.local` file in `hippo-ai/` with at least:
 
 ```bash
 OPENAI_API_KEY=your-openai-api-key-here
